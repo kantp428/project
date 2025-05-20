@@ -10,6 +10,8 @@ import {
   Legend,
 } from "chart.js";
 import useFetchData from "@/hooks/useFetchData";
+import { Card, CardContent, Box, Typography } from "@mui/material";
+import { ResponsiveContainer } from "recharts";
 
 ChartJS.register(
   CategoryScale,
@@ -165,9 +167,29 @@ const GPAXChart = ({ type, year }: GPAXChartProps) => {
   };
 
   return (
-    <div className="w-full h-[300px]">
-      <Bar data={chartData} options={options} />
-    </div>
+    <>
+      <Card
+        sx={{
+          paddingY: 1,
+          paddingX: 2,
+          height: "100%",
+          width: "auto",
+          maxHeight: "650px",
+          maxWidth: "900px",
+          display: "flex",
+          flexDirection: "column",
+          transition: "transform 0.2s ease-in-out",
+          "&:hover": {
+            transform: "translateY(-4px)",
+          },
+        }}
+      >
+        <CardContent sx={{ flexGrow: 1 }}></CardContent>
+        <ResponsiveContainer width="100%" height="100%">
+          <Bar data={chartData} options={options} />
+        </ResponsiveContainer>
+      </Card>
+    </>
   );
 };
 

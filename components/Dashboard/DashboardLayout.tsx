@@ -75,9 +75,9 @@ export default function DashboardLayout({
             pt: 0.5,
           }}
         >
-          <Typography variant="h6" fontWeight="bold" sx={{ mt: 0.2, ml: 0.5 }}>
+          <Box sx={{ mt: 0.2, ml: 0.5 }}>
             <img src="/picture/logo.png" alt="KU Logo" className="w-45 h-auto" />
-          </Typography>
+          </Box>
         </Box>
       </Box>
       <Divider />

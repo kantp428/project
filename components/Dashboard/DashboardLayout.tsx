@@ -48,7 +48,7 @@ export default function DashboardLayout({
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   const navigationItems = [
-    { text: "Home", icon: <HomeIcon />, href: "/home" },
+    { text: "Home", icon: <HomeIcon />, href: "/" },
     { text: "Information", icon: <AssignmentIcon/>, href: "/information" },
     { text: "Academic results", icon: <PeopleIcon />, href: "/academic" },
     { text: "Calculate academic results", icon: <AnalyticsIcon />, href: "/calculate" },

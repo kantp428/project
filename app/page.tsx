@@ -7,17 +7,18 @@ export default function Home() {
   elevation={4}
   sx={{
     padding: 3,
-    backgroundColor: '#fafafa',
+    // backgroundColor: '#fafafa',
     borderRadius: 2,
     border: '1px solid #ddd',
     margin: '20px auto',
     Width: 1000,
+    
   }}
 >
   <Grid container spacing={3}>
     {/* คอลัมน์ที่ 1 */}
     <Grid item xs={12} sm={6} md={3}>
-      <Typography variant="h6" gutterBottom sx={{ color: 'colorCode' }}>ข้อมูลส่วนตัว</Typography>
+      <Typography variant="h6" gutterBottom  >ข้อมูลส่วนตัว</Typography>
       <Typography variant="body2" color="text.secondary" sx={{ pl: 2 }}>
         รหัสประจำตัวนิสิต<br />
         ชื่อนามสกุล(ไทย)<br />

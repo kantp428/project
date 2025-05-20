@@ -1,32 +1,32 @@
 "use client";
 
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Typography from "@mui/material/Typography";
+import {
+  Box,
+  Drawer,
+  AppBar,
+  Toolbar,
+  List,
+  Divider,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-
+import Image from "next/image";
 
 // Icons
 import HomeIcon from "@mui/icons-material/Home";
-import BarChartIcon from "@mui/icons-material/BarChart";
 import PeopleIcon from "@mui/icons-material/People";
-import TaskIcon from "@mui/icons-material/Task";
-import SettingsIcon from "@mui/icons-material/Settings";
-import InfoIcon from "@mui/icons-material/Info";
-import FeedbackIcon from "@mui/icons-material/Feedback";
-import StarIcon from "@mui/icons-material/Star";
+import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+
 import Link from "next/link";
-import next from "next";
+import { usePathname } from "next/navigation";
 
 const drawerWidth = 240;
 
@@ -44,24 +44,15 @@ export default function DashboardLayout({
   handleDrawerToggle,
 }: DashboardLayoutProps) {
   const theme = useTheme();
+  const pathname = usePathname();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const handleListItemClick = (index: number) => {
-    setSelectedIndex(index);
-  };
 
   const navigationItems = [
-    { text: "Home", icon: <HomeIcon />, href: "/" },
-    { text: "Analytics", icon: <BarChartIcon />, href: "/Analytics" },
-    { text: "ChartVisual", icon: <PeopleIcon />, href:"/ChartVisual" },
-    { text: "Tasks", icon: <TaskIcon />, href:"/Tasks"},
-  ];
-
-  const secondaryNavigationItems = [
-    { text: "Settings", icon: <SettingsIcon /> },
-    { text: "About", icon: <InfoIcon /> },
-    { text: "Feedback", icon: <FeedbackIcon /> },
+    { text: "Home", icon: <HomeIcon />, href: "/home" },
+    { text: "Information", icon: <AssignmentIcon/>, href: "/information" },
+    { text: "Academic results", icon: <PeopleIcon />, href: "/academic" },
+    { text: "Calculate academic results", icon: <AnalyticsIcon />, href: "/calculate" },
+    { text: "Report", icon: <CollectionsBookmarkIcon />, href: "/report" },
   ];
 
   const drawer = (
@@ -84,59 +75,19 @@ export default function DashboardLayout({
             pt: 0.5,
           }}
         >
-          <StarIcon color="primary" />
-          <Typography variant="h6" fontWeight="bold" sx={{ mt: .2, ml: .5 }}>
-            Student Data
+          <Typography variant="h6" fontWeight="bold" sx={{ mt: 0.2, ml: 0.5 }}>
+            <img src="/picture/logo.png" alt="KU Logo" className="w-45 h-auto" />
           </Typography>
         </Box>
       </Box>
       <Divider />
       <List component="nav">
-        {navigationItems.map((item, index) => (
-          <Link href={item.href}>
+        {navigationItems.map((item) => (
           <ListItem key={item.text} disablePadding>
             <ListItemButton
-              selected={selectedIndex === index}
-              onClick={() => handleListItemClick(index)}
-              sx={{
-                borderRadius: "8px",
-                mx: 1,
-                "&.Mui-selected": {
-                  backgroundColor: "rgba(63, 81, 181, 0.1)",
-                  "&:hover": {
-                    backgroundColor: "rgba(63, 81, 181, 0.2)",
-                  },
-                },
-              }}
-              >
-              <ListItemIcon
-                sx={{
-                  minWidth: 40,
-                  color: selectedIndex === index ? "primary.main" : "inherit",
-                }}
-                >
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.text}
-                primaryTypographyProps={{
-                  fontWeight: selectedIndex === index ? 600 : 400,
-                }}
-                />
-            </ListItemButton>
-          </ListItem>
-        </Link>
-        ))}
-      </List>
-      <Divider sx={{ my: 2 }} />
-      <List>
-        {secondaryNavigationItems.map((item, index) => (
-          <ListItem key={item.text} disablePadding>
-            <ListItemButton
-              selected={selectedIndex === index + navigationItems.length}
-              onClick={() =>
-                handleListItemClick(index + navigationItems.length)
-              }
+              component={Link}
+              href={item.href}
+              selected={pathname === item.href}
               sx={{
                 borderRadius: "8px",
                 mx: 1,
@@ -151,10 +102,7 @@ export default function DashboardLayout({
               <ListItemIcon
                 sx={{
                   minWidth: 40,
-                  color:
-                    selectedIndex === index + navigationItems.length
-                      ? "primary.main"
-                      : "inherit",
+                  color: pathname === item.href ? "primary.main" : "inherit",
                 }}
               >
                 {item.icon}
@@ -162,43 +110,13 @@ export default function DashboardLayout({
               <ListItemText
                 primary={item.text}
                 primaryTypographyProps={{
-                  fontWeight:
-                    selectedIndex === index + navigationItems.length
-                      ? 600
-                      : 400,
+                  fontWeight: pathname === item.href ? 600 : 400,
                 }}
               />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      {/* <Box sx={{ flexGrow: 1 }} />
-      <Box sx={{ p: 2 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            p: 2,
-            bgcolor: 'background.default',
-            borderRadius: 2,
-            boxShadow: 1,
-          }}
-        >
-          <Avatar
-            sx={{ mr: 2, width: 40, height: 40 }}
-            alt="Riley Carter"
-            src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=40"
-          />
-          <Box>
-            <Typography variant="subtitle2" fontWeight="bold">
-              Riley Carter
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              riley@email.com
-            </Typography>
-          </Box>
-        </Box>
-      </Box> */}
     </>
   );
 
@@ -218,10 +136,12 @@ export default function DashboardLayout({
       >
         <Toolbar>{header}</Toolbar>
       </AppBar>
+
       <Box
         component="nav"
         sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
       >
+        {/* Mobile Drawer */}
         <Drawer
           variant="temporary"
           open={mobileOpen}
@@ -239,6 +159,7 @@ export default function DashboardLayout({
         >
           {drawer}
         </Drawer>
+
         <Drawer
           variant="permanent"
           sx={{
@@ -255,6 +176,7 @@ export default function DashboardLayout({
           {drawer}
         </Drawer>
       </Box>
+
       <Box
         component="main"
         sx={{
@@ -264,7 +186,7 @@ export default function DashboardLayout({
           mt: "64px",
           overflow: "auto",
           height: "calc(100vh - 64px)",
-          bgcolor: "Background.default",
+          bgcolor: "background.default",
         }}
       >
         {children}

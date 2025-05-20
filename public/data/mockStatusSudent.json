@@ -1,0 +1,44 @@
+{
+  "60": {
+    "entry": "65",
+    "studying": "37",
+    "graduated": "23",
+    "failed": "5"
+  },
+  "61": {
+    "entry": "65",
+    "studying": "36",
+    "graduated": "26",
+    "failed": "3"
+  },
+  "62": {
+    "entry": "65",
+    "studying": "33",
+    "graduated": "28",
+    "failed": "4"
+  },
+  "63": {
+    "entry": "65",
+    "studying": "33",
+    "graduated": "30",
+    "failed": "2"
+  },
+  "64": {
+    "entry": "56",
+    "studying": "50",
+    "graduated": "0",
+    "failed": "6"
+  },
+  "65": {
+    "entry": "58",
+    "studying": "54",
+    "graduated": "0",
+    "failed": "4"
+  },
+  "66": {
+    "entry": "62",
+    "studying": "59",
+    "graduated": "0",
+    "failed": "3"
+  }
+}

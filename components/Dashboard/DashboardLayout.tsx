@@ -54,7 +54,7 @@ export default function DashboardLayout({
   const navigationItems = [
     { text: "Home", icon: <HomeIcon />, href: "/" },
     { text: "Analytics", icon: <BarChartIcon />, href: "/Analytics" },
-    { text: "Clients", icon: <PeopleIcon />, href:"/Clients" },
+    { text: "ChartVisual", icon: <PeopleIcon />, href:"/ChartVisual" },
     { text: "Tasks", icon: <TaskIcon />, href:"/Tasks"},
   ];
 

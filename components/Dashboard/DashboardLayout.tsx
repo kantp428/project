@@ -1,30 +1,32 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { useState } from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 
 // Icons
-import HomeIcon from '@mui/icons-material/Home';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import PeopleIcon from '@mui/icons-material/People';
-import TaskIcon from '@mui/icons-material/Task';
-import SettingsIcon from '@mui/icons-material/Settings';
-import InfoIcon from '@mui/icons-material/Info';
-import FeedbackIcon from '@mui/icons-material/Feedback';
-import StarIcon from '@mui/icons-material/Star';
+import HomeIcon from "@mui/icons-material/Home";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import PeopleIcon from "@mui/icons-material/People";
+import TaskIcon from "@mui/icons-material/Task";
+import SettingsIcon from "@mui/icons-material/Settings";
+import InfoIcon from "@mui/icons-material/Info";
+import FeedbackIcon from "@mui/icons-material/Feedback";
+import StarIcon from "@mui/icons-material/Star";
+import Link from "next/link";
+import next from "next";
 
 const drawerWidth = 240;
 
@@ -42,7 +44,7 @@ export default function DashboardLayout({
   handleDrawerToggle,
 }: DashboardLayoutProps) {
   const theme = useTheme();
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up('md'));
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleListItemClick = (index: number) => {
@@ -50,71 +52,69 @@ export default function DashboardLayout({
   };
 
   const navigationItems = [
-    { text: 'Home', icon: <HomeIcon /> },
-    { text: 'Analytics', icon: <BarChartIcon /> },
-    { text: 'Clients', icon: <PeopleIcon /> },
-    { text: 'Tasks', icon: <TaskIcon /> },
-    { text: 'Hello', icon: <TaskIcon/>},
+    { text: "Home", icon: <HomeIcon />, href: "/" },
+    { text: "Analytics", icon: <BarChartIcon />, href: "/Analytics" },
+    { text: "Clients", icon: <PeopleIcon />, href:"/Clients" },
+    { text: "Tasks", icon: <TaskIcon />, href:"/Tasks"},
   ];
 
   const secondaryNavigationItems = [
-    { text: 'Settings', icon: <SettingsIcon /> },
-    { text: 'About', icon: <InfoIcon /> },
-    { text: 'Feedback', icon: <FeedbackIcon /> },
+    { text: "Settings", icon: <SettingsIcon /> },
+    { text: "About", icon: <InfoIcon /> },
+    { text: "Feedback", icon: <FeedbackIcon /> },
   ];
 
   const drawer = (
     <>
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
           padding: theme.spacing(2),
         }}
       >
         <Box
           sx={{
-            display: 'flex',
-            alignItems: 'center',
+            display: "flex",
+            alignItems: "center",
             gap: 1,
-            width: '100%',
-            mb: 2,
+            width: "100%",
+            mb: 1,
+            pt: 0.5,
           }}
         >
           <StarIcon color="primary" />
-          <Typography variant="h6" fontWeight="bold">
-            Sitemark-web
+          <Typography variant="h6" fontWeight="bold" sx={{ mt: .2, ml: .5 }}>
+            Student Data
           </Typography>
         </Box>
-        <Typography color="text.secondary" variant="body2" sx={{ mb: 1 }}>
-          Web app
-        </Typography>
       </Box>
       <Divider />
       <List component="nav">
         {navigationItems.map((item, index) => (
+          <Link href={item.href}>
           <ListItem key={item.text} disablePadding>
             <ListItemButton
               selected={selectedIndex === index}
               onClick={() => handleListItemClick(index)}
               sx={{
-                borderRadius: '8px',
+                borderRadius: "8px",
                 mx: 1,
-                '&.Mui-selected': {
-                  backgroundColor: 'rgba(63, 81, 181, 0.1)',
-                  '&:hover': {
-                    backgroundColor: 'rgba(63, 81, 181, 0.2)',
+                "&.Mui-selected": {
+                  backgroundColor: "rgba(63, 81, 181, 0.1)",
+                  "&:hover": {
+                    backgroundColor: "rgba(63, 81, 181, 0.2)",
                   },
                 },
               }}
-            >
+              >
               <ListItemIcon
                 sx={{
                   minWidth: 40,
-                  color: selectedIndex === index ? 'primary.main' : 'inherit',
+                  color: selectedIndex === index ? "primary.main" : "inherit",
                 }}
-              >
+                >
                 {item.icon}
               </ListItemIcon>
               <ListItemText
@@ -122,9 +122,10 @@ export default function DashboardLayout({
                 primaryTypographyProps={{
                   fontWeight: selectedIndex === index ? 600 : 400,
                 }}
-              />
+                />
             </ListItemButton>
           </ListItem>
+        </Link>
         ))}
       </List>
       <Divider sx={{ my: 2 }} />
@@ -133,14 +134,16 @@ export default function DashboardLayout({
           <ListItem key={item.text} disablePadding>
             <ListItemButton
               selected={selectedIndex === index + navigationItems.length}
-              onClick={() => handleListItemClick(index + navigationItems.length)}
+              onClick={() =>
+                handleListItemClick(index + navigationItems.length)
+              }
               sx={{
-                borderRadius: '8px',
+                borderRadius: "8px",
                 mx: 1,
-                '&.Mui-selected': {
-                  backgroundColor: 'rgba(63, 81, 181, 0.1)',
-                  '&:hover': {
-                    backgroundColor: 'rgba(63, 81, 181, 0.2)',
+                "&.Mui-selected": {
+                  backgroundColor: "rgba(63, 81, 181, 0.1)",
+                  "&:hover": {
+                    backgroundColor: "rgba(63, 81, 181, 0.2)",
                   },
                 },
               }}
@@ -150,8 +153,8 @@ export default function DashboardLayout({
                   minWidth: 40,
                   color:
                     selectedIndex === index + navigationItems.length
-                      ? 'primary.main'
-                      : 'inherit',
+                      ? "primary.main"
+                      : "inherit",
                 }}
               >
                 {item.icon}
@@ -160,14 +163,16 @@ export default function DashboardLayout({
                 primary={item.text}
                 primaryTypographyProps={{
                   fontWeight:
-                    selectedIndex === index + navigationItems.length ? 600 : 400,
+                    selectedIndex === index + navigationItems.length
+                      ? 600
+                      : 400,
                 }}
               />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <Box sx={{ flexGrow: 1 }} />
+      {/* <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ p: 2 }}>
         <Box
           sx={{
@@ -193,22 +198,22 @@ export default function DashboardLayout({
             </Typography>
           </Box>
         </Box>
-      </Box>
+      </Box> */}
     </>
   );
 
   return (
-    <Box sx={{ display: 'flex', height: '100vh' }}>
+    <Box sx={{ display: "flex", height: "100vh" }}>
       <AppBar
         position="fixed"
         sx={{
           width: { md: `calc(100% - ${drawerWidth}px)` },
           ml: { md: `${drawerWidth}px` },
-          boxShadow: 'none',
-          bgcolor: 'background.paper',
-          color: 'text.primary',
+          boxShadow: "none",
+          bgcolor: "background.paper",
+          color: "text.primary",
           borderBottom: 1,
-          borderColor: 'divider',
+          borderColor: "divider",
         }}
       >
         <Toolbar>{header}</Toolbar>
@@ -225,9 +230,9 @@ export default function DashboardLayout({
             keepMounted: true,
           }}
           sx={{
-            display: { xs: 'block', md: 'none' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
+            display: { xs: "block", md: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
               width: drawerWidth,
             },
           }}
@@ -237,12 +242,12 @@ export default function DashboardLayout({
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: 'none', md: 'block' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
+            display: { xs: "none", md: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
               width: drawerWidth,
               borderRight: 1,
-              borderColor: 'divider',
+              borderColor: "divider",
             },
           }}
           open
@@ -255,11 +260,11 @@ export default function DashboardLayout({
         sx={{
           flexGrow: 1,
           p: { xs: 2, md: 3 },
-          width: { xs: '100%', md: `calc(100% - ${drawerWidth}px)` },
-          mt: '64px',
-          overflow: 'auto',
-          height: 'calc(100vh - 64px)',
-          bgcolor: 'background.default',
+          width: { xs: "100%", md: `calc(100% - ${drawerWidth}px)` },
+          mt: "64px",
+          overflow: "auto",
+          height: "calc(100vh - 64px)",
+          bgcolor: "Background.default",
         }}
       >
         {children}

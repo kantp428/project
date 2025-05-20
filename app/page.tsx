@@ -1,5 +1,9 @@
-import Dashboard from '@/components/Dashboard/Dashboard';
+import { Typography } from "@mui/material";
 
 export default function Home() {
-  return <Dashboard />;
+  return (
+    <>
+      <Typography>Hello World</Typography>
+    </>
+  );
 }

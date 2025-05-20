@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import DashboardLayout from '@/components/Dashboard/DashboardLayout';
 import DashboardHeader from '@/components/Dashboard/DashboardHeader';
-import OverviewPage from '@/components/Dashboard/OverviewPage';
 
-export default function Dashboard() {
+export default function ClientLayoutWrapper({ children }: { children: React.ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -18,7 +17,7 @@ export default function Dashboard() {
       handleDrawerToggle={handleDrawerToggle}
       header={<DashboardHeader handleDrawerToggle={handleDrawerToggle} />}
     >
-      <OverviewPage />
+      {children}
     </DashboardLayout>
   );
 }

@@ -56,7 +56,7 @@ export default function DashboardHeader({
         >
           <MenuIcon />
         </IconButton>
-        <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+        {/* <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
           <Breadcrumbs
             separator={<NavigateNextIcon fontSize="small" />}
             aria-label="breadcrumb"
@@ -71,7 +71,7 @@ export default function DashboardHeader({
             </Link>
             <Typography color="text.primary">Home</Typography>
           </Breadcrumbs>
-        </Box>
+        </Box> */}
       </Box>
 
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>

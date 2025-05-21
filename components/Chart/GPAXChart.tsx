@@ -12,7 +12,6 @@ import {
 import useFetchData from "@/hooks/useFetchData";
 import { Card, CardContent, Box, Typography } from "@mui/material";
 import { ResponsiveContainer } from "recharts";
-import { Bold } from "lucide-react";
 
 ChartJS.register(
   CategoryScale,
@@ -49,9 +48,10 @@ type GPAData = {
 type GPAXChartProps = {
   type: "yearGPA" | "studyingGPA" | "graduatedGPA";
   year?: keyof YearGPA; // only use for yearGPA
+  title: string;
 };
 
-const GPAXChart = ({ type, year }: GPAXChartProps) => {
+const GPAXChart = ({ type, year, title}: GPAXChartProps) => {
   const {
     data: rawData,
     loading,
@@ -135,27 +135,22 @@ const GPAXChart = ({ type, year }: GPAXChartProps) => {
     ],
   };
 
-  // let chartTitle = "";
-  // if (type === "yearGPA" && year) {
-  //   chartTitle = `Percentage Bar Graph - Year GPA ${year}`;
-  // } else if (type === "studyingGPA") {
-  //   chartTitle = "Percentage Bar Graph - Studying GPA";
-  // } else {
-  //   chartTitle = "Percentage Bar Graph - Graduated GPA";
-  // }
-
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    // plugins: {
-    //   title: {
-    //     display: true,
-    //     text: chartTitle,
-    //     font: {
-    //       size: 18,
-    //     },
-    //   },
-    // },
+    plugins: {
+      legend: {
+        display: true,
+        position: "top" as const,
+        labels: {
+          boxWidth: 15, // smaller legend boxes
+          padding: 10, // reduce spacing between items
+          font: {
+            size: 12, // reduce text size to fit in one line
+          },
+        },
+      },
+    },
     scales: {
       x: {
         stacked: true,
@@ -176,23 +171,31 @@ const GPAXChart = ({ type, year }: GPAXChartProps) => {
           height: "100%",
           width: "auto",
           maxHeight: "650px",
-          maxWidth: "700px",
+          maxWidth: "900px",
           display: "flex",
           flexDirection: "column",
-          textAlign: "center",
+          // textAlign: "center",
           transition: "transform 0.2s ease-in-out",
           "&:hover": {
             transform: "translateY(-4px)",
           },
         }}
       >
-        <Typography variant="h6" color="primary">
-          Percentage GPAX by {type} {type === "yearGPA" ? year : ""}
+        <Typography
+          variant="h6"
+          color="primary"
+          sx={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {title}
         </Typography>
-        <CardContent sx={{ flexGrow: 1, paddingTop: 2}}>
-        <ResponsiveContainer width="100%" height="100%">
-          <Bar data={chartData} options={options} />
-        </ResponsiveContainer>
+        <CardContent sx={{ flexGrow: 1, paddingTop: 2 }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <Bar data={chartData} options={options} />
+          </ResponsiveContainer>
         </CardContent>
       </Card>
     </>

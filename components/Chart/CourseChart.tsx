@@ -85,6 +85,19 @@ const CourseChart = () => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+        position: "top" as const,
+        labels: {
+          boxWidth: 10, // smaller legend boxes
+          padding: 10, // reduce spacing between items
+          font: {
+            size: 12, // reduce text size to fit in one line
+          },
+        },
+      },
+    },
   };
 
   return (
@@ -105,10 +118,11 @@ const CourseChart = () => {
           },
         }}
       >
-        <CardContent sx={{ flexGrow: 1 }}></CardContent>
-        <ResponsiveContainer width="100%" height="100%" >
-          <Bar data={chartData} options={options} />
-        </ResponsiveContainer>
+        <CardContent sx={{ flexGrow: 1 }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <Bar data={chartData} options={options} />
+          </ResponsiveContainer>
+        </CardContent>
       </Card>
     </>
   );

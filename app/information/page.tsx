@@ -20,7 +20,7 @@ export default function Information() {
             <Typography variant="h6" gutterBottom>
               ข้อมูลส่วนตัว
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ pl: 2 }}>
+            <Typography variant="body2"  sx={{ pl: 2 }}>
               รหัสประจำตัวนิสิต
               <br />
               ชื่อนามสกุล(ไทย)
@@ -49,7 +49,7 @@ export default function Information() {
             <Typography variant="h6" gutterBottom>
               ช่องทางการติดต่อ
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ pl: 2 }}>
+            <Typography variant="body2"  sx={{ pl: 2 }}>
               เบอร์โทรศัพท์
               <br />
               E-mail
@@ -74,7 +74,7 @@ export default function Information() {
             <Typography variant="h6" gutterBottom>
               การศึกษาปัจจุบัน
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ pl: 2 }}>
+            <Typography variant="body2" sx={{ pl: 2 }}>
               อาจารย์ที่ปรึกษา
               <br />
               วิทยาเขต
@@ -113,7 +113,7 @@ export default function Information() {
             <Typography variant="h6" gutterBottom>
               การศึกษาระดับมัธยม
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ pl: 2 }}>
+            <Typography variant="body2"  sx={{ pl: 2 }}>
               ชื่อโรงเรียน
               <br />
               ที่อยู่โรงเรียน

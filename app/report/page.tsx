@@ -1,5 +1,6 @@
 import CourseChart from "@/components/Chart/CourseChart";
 import GPAXChart from "@/components/Chart/GPAXChart";
+import TableChart from "@/components/Table/TableChart";
 import { Divider, Grid } from "@mui/material";
 import React from "react";
 
@@ -30,6 +31,9 @@ const page = () => {
         </Grid>
         <Grid item xs={12} sm={6} sx={{ marginBottom: 3 }}>
           <CourseChart />
+        </Grid>
+        <Grid item xs={12} sm={6} sx={{ marginBottom: 3 }}>
+          <TableChart />
         </Grid>
       </Grid>
     </>

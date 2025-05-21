@@ -1,0 +1,133 @@
+{
+  "studentInfo": {
+    "studentId": "63XXXXXXXX",
+    "fullNameTH": "ตอปิโด ระเบิดดาว",
+    "fullNameEN": "Torpido Rabueddao",
+    "phone": "087xxxxxxx",
+    "email": "Torpido.rab@ku.ac.th",
+    "faculty": "วิศวกรรมศาสตร์ (Engineering)",
+    "major": "วิศวกรรมคอมพิวเตอร์ (Computer Engineering)",
+    "program": "ปริญญาตรี (Bachelor's Degree)",
+    "advisor": "ดร.สมศักดิ์ เก่งการคิด",
+    "status": "กำลังศึกษา (Studying)"
+  },
+  "academicRecords": [
+    {
+      "year": 2563,
+      "semester": "ภาคต้น",
+      "credits": 19,
+      "GPA": 2.26,
+      "GPAX": 2.26,
+      "GPAXChange": 0.00
+    },
+    {
+      "year": 2563,
+      "semester": "ภาคปลาย",
+      "credits": 19,
+      "GPA": 3.05,
+      "GPAX": 2.66,
+      "GPAXChange": 0.40
+    },
+    {
+      "year": 2564,
+      "semester": "ภาคฤดูร้อน",
+      "credits": 6,
+      "GPA": 3.25,
+      "GPAX": 2.74,
+      "GPAXChange": 0.08
+    },
+    {
+      "year": 2564,
+      "semester": "ภาคต้น",
+      "credits": 20,
+      "GPA": 2.20,
+      "GPAX": 2.57,
+      "GPAXChange": -0.17
+    },
+    {
+      "year": 2564,
+      "semester": "ภาคปลาย",
+      "credits": 14,
+      "GPA": 2.61,
+      "GPAX": 2.58,
+      "GPAXChange": 0.01
+    },
+    {
+      "year": 2565,
+      "semester": "ภาคฤดูร้อน",
+      "credits": 3,
+      "GPA": 4.00,
+      "GPAX": 2.63,
+      "GPAXChange": 0.05
+    },
+    {
+      "year": 2565,
+      "semester": "ภาคต้น",
+      "credits": 16,
+      "GPA": 2.13,
+      "GPAX": 2.55,
+      "GPAXChange": -0.08
+    },
+    {
+      "year": 2565,
+      "semester": "ภาคปลาย",
+      "credits": 22,
+      "GPA": 1.45,
+      "GPAX": 2.34,
+      "GPAXChange": -0.21
+    },
+    {
+      "year": 2566,
+      "semester": "ภาคฤดูร้อน",
+      "credits": 3,
+      "GPA": 1.50,
+      "GPAX": 2.32,
+      "GPAXChange": -0.02
+    },
+    {
+      "year": 2566,
+      "semester": "ภาคต้น",
+      "credits": 17,
+      "GPA": 1.47,
+      "GPAX": 2.22,
+      "GPAXChange": -0.10
+    }
+  ],
+  "subjectCategories": [
+    {
+      "category": "วิชาศึกษาทั่วไป",
+      "averageGPA": 3.30,
+      "totalCredits": 30,
+      "completedCredits": 30,
+      "incompleteCredits": 0
+    },
+    {
+      "category": "วิชาเสรี",
+      "averageGPA": 4.00,
+      "totalCredits": 6,
+      "completedCredits": 6,
+      "incompleteCredits": 0
+    },
+    {
+      "category": "วิชาแกน",
+      "averageGPA": 1.92,
+      "totalCredits": 30,
+      "completedCredits": 30,
+      "incompleteCredits": 0
+    },
+    {
+      "category": "วิชาเฉพาะด้าน",
+      "averageGPA": 1.69,
+      "totalCredits": 55,
+      "completedCredits": 47,
+      "incompleteCredits": 8
+    },
+    {
+      "category": "วิชาเฉพาะเลือก",
+      "averageGPA": 2.00,
+      "totalCredits": 19,
+      "completedCredits": 11,
+      "incompleteCredits": 8
+    }
+  ]
+}

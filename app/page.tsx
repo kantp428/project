@@ -1,3 +1,4 @@
+import UserTableChart from "@/components/Chart/UserTableChart";
 import { Typography, Button, Box, Paper, Grid } from "@mui/material";
 
 export default function Home() {
@@ -133,6 +134,7 @@ export default function Home() {
           </Grid>
         </Grid>
       </Paper>
+      <UserTableChart />
     </>
   );
 }

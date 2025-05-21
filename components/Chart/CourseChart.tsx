@@ -24,10 +24,6 @@ ChartJS.register(
   Legend
 );
 
-type GPAXChartProps = {
-  year: string;
-};
-
 const CourseChart = () => {
   type StatusData = {
     [code: string]: {

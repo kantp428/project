@@ -186,9 +186,9 @@ const GPAXChart = ({ type, year }: GPAXChartProps) => {
           },
         }}
       >
-        {/* <Typography variant="h6" color="primary">
+        <Typography variant="h6" color="primary">
           Percentage GPAX by {type} {type === "yearGPA" ? year : ""}
-        </Typography> */}
+        </Typography>
         <CardContent sx={{ flexGrow: 1, paddingTop: 2}}>
         <ResponsiveContainer width="100%" height="100%">
           <Bar data={chartData} options={options} />

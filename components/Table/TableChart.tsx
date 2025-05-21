@@ -300,6 +300,7 @@ export default function EnhancedTable() {
                     selected={isItemSelected}
                     sx={{ cursor: 'pointer' }}
                   >
+                    
                     <TableCell />
                     {/*<TableCell padding="checkbox">
                       <Checkbox

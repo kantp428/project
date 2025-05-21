@@ -12,6 +12,7 @@ import {
 import useFetchData from "@/hooks/useFetchData";
 import { Card, CardContent, Box, Typography } from "@mui/material";
 import { ResponsiveContainer } from "recharts";
+import { Bold } from "lucide-react";
 
 ChartJS.register(
   CategoryScale,
@@ -175,19 +176,24 @@ const GPAXChart = ({ type, year }: GPAXChartProps) => {
           height: "100%",
           width: "auto",
           maxHeight: "650px",
-          maxWidth: "900px",
+          maxWidth: "700px",
           display: "flex",
           flexDirection: "column",
+          textAlign: "center",
           transition: "transform 0.2s ease-in-out",
           "&:hover": {
             transform: "translateY(-4px)",
           },
         }}
       >
-        <CardContent sx={{ flexGrow: 1 }}></CardContent>
+        <Typography variant="h6" color="primary">
+          Percentage GPAX by {type} {type === "yearGPA" ? year : ""}
+        </Typography>
+        <CardContent sx={{ flexGrow: 1, paddingTop: 2}}>
         <ResponsiveContainer width="100%" height="100%">
           <Bar data={chartData} options={options} />
         </ResponsiveContainer>
+        </CardContent>
       </Card>
     </>
   );

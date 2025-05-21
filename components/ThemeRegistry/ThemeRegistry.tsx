@@ -42,6 +42,10 @@ export default function ThemeRegistry({ children }: ThemeRegistryProps) {
         fontSize: '1.25rem',
         fontWeight: 600,
       },
+      h6: {
+        fontSize: '1.1rem',
+        fontWeight: 600,
+      },
     },
     components: {
       MuiCssBaseline: {

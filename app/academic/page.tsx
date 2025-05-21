@@ -1,8 +1,9 @@
 import React from 'react'
+import EnhancedTable from '@/components/table/Tablechart'
 
 const page = () => {
   return (
-    <div>Analytics</div>
+    <EnhancedTable />
   )
 }
 

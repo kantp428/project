@@ -6,7 +6,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Box,
 } from "@mui/material";
 import { AcademicRecord } from "@/types/student";
 
@@ -16,7 +15,7 @@ type GPATableProps = {
 
 const GPATable = ({ data }: GPATableProps) => {
   return (
-    <TableContainer component={Paper} elevation={2} sx={{ width: "100%" }}>
+    <TableContainer component={Paper} elevation={2} sx={{ width: "100%", padding: 1}}>
       <Table size="small">
         <TableHead>
           <TableRow>

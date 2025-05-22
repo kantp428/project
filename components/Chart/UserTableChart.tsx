@@ -1,5 +1,5 @@
 "use client";
-import { Card, Grid } from "@mui/material";
+import { Card, CardContent, Grid } from "@mui/material";
 import UserGPAChart from "./UserGPAChart";
 import useFetchData from "@/hooks/useFetchData";
 import { StudentProfile } from "@/types/student";
@@ -19,10 +19,6 @@ const UserTableChart = () => {
         sx={{
           paddingY: 1,
           paddingX: 2,
-          height: "100%",
-          width: "auto",
-          maxHeight: "650px",
-          maxWidth: "900px",
           display: "flex",
           flexDirection: "column",
           transition: "transform 0.2s ease-in-out",
@@ -31,14 +27,16 @@ const UserTableChart = () => {
           },
         }}
       >
-        <Grid container>
-          <Grid item xs={12} sm={6}>
-            <UserGPAChart data={data?.academicRecords || []} />
+        <CardContent>
+          <Grid container>
+            <Grid item xs={12} mb={3}>
+              <UserGPAChart data={data?.academicRecords || []} />
+            </Grid>
+            <Grid item xs={12} mb={3}>
+              <GPATable data={data?.academicRecords || []} />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <GPATable data={data?.academicRecords || []} />
-          </Grid>
-        </Grid>
+        </CardContent>
       </Card>
     </>
   );

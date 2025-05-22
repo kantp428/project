@@ -1,10 +1,9 @@
 "use client";
 import CourseChart from "@/components/Chart/CourseChart";
-import GPAXChart from "@/components/Chart/GPAXChart";
 import TableChart from "@/components/Table/TableChart";
 
 import React from "react";
-import { Typography, Button, Box, Paper, Grid } from "@mui/material";
+import { Typography, Paper, Grid } from "@mui/material";
 
 const Table_enchage = () => {
   return (
@@ -17,7 +16,7 @@ const Table_enchage = () => {
           margin: "20px auto",
           Width: 1000,
         }}>
-          <Typography>จำนวนิสิต (คน)</Typography>
+          <Typography>จำนวนนิสิต (คน)</Typography>
       <Grid container columnSpacing={2}>
       <Grid item xs={12} sm={6} sx={{ marginBottom: 3 }}>
         <CourseChart />

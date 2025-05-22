@@ -9,20 +9,12 @@ import {
   Title,
   Tooltip,
   Legend,
-  plugins,
 } from "chart.js";
 import useFetchData from "@/hooks/useFetchData";
-import { Box, Card, CardContent } from "@mui/material";
-import { ResponsiveContainer } from "recharts";
+import { Box, Card, CardContent, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const CourseChart = () => {
   type StatusData = {
@@ -33,20 +25,21 @@ const CourseChart = () => {
       failed: string;
     };
   };
+
   const {
     data: rawData,
     loading,
     error,
   } = useFetchData<StatusData>("/data/mockStatusSudent.json");
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // <600px
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
   const data = rawData as StatusData;
-
-  // create obj.
   const labels = Object.keys(data);
-  // map data using code as key
   const entryData = labels.map((code) => parseInt(data[code].entry));
   const studyingData = labels.map((code) => parseInt(data[code].studying));
   const graduatedData = labels.map((code) => parseInt(data[code].graduated));
@@ -83,13 +76,29 @@ const CourseChart = () => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: true,
         position: "top" as const,
         labels: {
-          boxWidth: 10, // smaller legend boxes
-          padding: 10, // reduce spacing between items
+          boxWidth: isMobile ? 8 : 12,
+          padding: isMobile ? 6 : 10,
           font: {
-            size: 12, // reduce text size to fit in one line
+            size: isMobile ? 10 : 14,
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: isMobile ? 9 : 12,
+          },
+        },
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          font: {
+            size: isMobile ? 9 : 12,
           },
         },
       },
@@ -97,30 +106,26 @@ const CourseChart = () => {
   };
 
   return (
-    <>
-      <Box
-        sx={{
-          paddingY: 1,
-          paddingX: 2,
-          height: "100%",
-          width: "auto",
-          maxHeight: "650px",
-          maxWidth: "900px",
-          display: "flex",
-          flexDirection: "column",
-          transition: "transform 0.2s ease-in-out",
-          "&:hover": {
-            transform: "translateY(-4px)",
-          },
-        }}
-      >
-        <CardContent sx={{ flexGrow: 1 }}>
-          <ResponsiveContainer width="100%" height="100%">
-            <Bar data={chartData} options={options} />
-          </ResponsiveContainer>
+    <Box
+      sx={{
+        px: { xs: 1, sm: 2 },
+        py: { xs: 2, sm: 3 },
+        width: "100%",
+        maxWidth: 900,
+        mx: "auto",
+      }}
+    >
+      <Card elevation={3}>
+        <CardContent
+          sx={{
+            height: { xs: 300, sm: 400 },
+            position: "relative",
+          }}
+        >
+          <Bar data={chartData} options={options} />
         </CardContent>
-      </Box>
-    </>
+      </Card>
+    </Box>
   );
 };
 

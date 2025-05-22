@@ -2,7 +2,7 @@ import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { SubjectCategory } from "@/types/student";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -17,7 +17,6 @@ const CategoryChart: React.FC<CategoryChartProps> = ({ data }) => {
     labels,
     datasets: [
       {
-        label: "# of Votes",
         data: [data.completedCredits, data.incompleteCredits],
         backgroundColor: [
           data.averageGPA > 3.25
@@ -33,18 +32,66 @@ const CategoryChart: React.FC<CategoryChartProps> = ({ data }) => {
     ],
   };
 
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+
   return (
-    <Card>
-      <Typography variant="h5" color="primary">
+    <Card
+      sx={{
+        paddingY: 1,
+        paddingX: 2,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        transition: "transform 0.2s ease-in-out",
+        "&:hover": {
+          transform: "translateY(-4px)",
+        },
+      }}
+    >
+      <Typography variant="body2" sx={{ alignSelf: "flex-start", mb: 1, mt: 1, fontWeight: "bold" }}>
         {data.category}
       </Typography>
-      <CardContent>
-        <Doughnut data={chartData} />
-        <Typography variant="h5" color="secondary">
-          `${(data.incompleteCredits / total) * 100} %`
+
+      <CardContent
+        sx={{
+          width: "100%",
+          padding: "8px 0",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            width: "100%",
+            height: 160,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Doughnut data={chartData} options={options} />
+        </Box>
+
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ mt: 2, fontSize: 12 }}
+        >
+          Progress: {((data.completedCredits / total) * 100).toFixed(2)}%
         </Typography>
-        <Typography variant="h5" color="secondary">
-          {data.averageGPA}
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ fontSize: 12 }}
+        >
+          Average GPA: {data.averageGPA.toFixed(2)}
         </Typography>
       </CardContent>
     </Card>

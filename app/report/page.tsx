@@ -5,7 +5,7 @@ import TableChart from "@/components/Table/TableChart";
 import { Card, Divider, Grid, Box, Typography } from "@mui/material";
 import { RadialLinearScale } from "chart.js";
 import React from "react";
-import Gpadata from "@/components/Chart/gpadata";
+import Gpadata from "@/components/Chart/Gpadata";
 const gpaData = [
   { label: "3.25-4.00", count: 41, color: "#6DD3EC" },
   { label: "2.00-3.24", count: 164, color: "#8CD790" },

@@ -1,8 +1,8 @@
 import React from 'react'
-
+import Namedata from '@/components/Chart/Namedata'
 const page = () => {
   return (
-    <div>Analytics</div>
+    <Namedata />
   )
 }
 

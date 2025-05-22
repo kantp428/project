@@ -13,6 +13,7 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import { Card } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
+import { Divider, Grid, Typography } from "@mui/material";
 
 interface Data {
   id: number;
@@ -103,8 +104,9 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   return (
     <TableHead>
       <TableRow>
-      <TableCell />
-        {/*<TableCell padding="checkbox">
+      
+      {/*<TableCell />
+      <TableCell padding="checkbox">
           <Checkbox
             color="primary"
             indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -262,11 +264,12 @@ export default function EnhancedTable() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', maxWidth: '100%' }}>
+      {/*<TableContainer sx={{ overflowX: 'auto' }}>*/}
       {/* <Card sx={{ width: '100%', mb: 2 }}> */}
         {/*<EnhancedTableToolbar numSelected={selected.length} />*/}
-        <TableContainer>
-          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size={dense ? 'small' : 'medium'}>
+        
+        <Table sx={{ width: '100%', tableLayout: 'fixed' }} aria-labelledby="tableTitle" size={dense ? 'small' : 'medium'}>
             <EnhancedTableHead
               numSelected={selected.length}
               order={order}
@@ -276,7 +279,8 @@ export default function EnhancedTable() {
               rowCount={rows.length}
             />
             <TableBody>
-              {visibleRows.map((row, index) => {
+              {/*{visibleRows.map((row, index) => {*/}
+                {rows.map((row, index) => {
                 const isItemSelected = selected.includes(row.id);
                 const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -292,8 +296,8 @@ export default function EnhancedTable() {
                     sx={{ cursor: 'pointer' }}
                   >
                     
-                    <TableCell />
-                    {/*<TableCell padding="checkbox">
+                   {/*<TableCell />
+                    <TableCell padding="checkbox">
                       <Checkbox
                         color="primary"
                         checked={isItemSelected}
@@ -312,13 +316,14 @@ export default function EnhancedTable() {
               })}
               {emptyRows > 0 && (
                 <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-                  <TableCell colSpan={6} />
+                  {/*<TableCell colSpan={6} />*/}
                 </TableRow>
               )}
             </TableBody>
           </Table>
-        </TableContainer>
-        <TablePagination
+          {/*</TableContainer>*/}
+        
+        {/*<TablePagination 
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={rows.length}
@@ -326,7 +331,8 @@ export default function EnhancedTable() {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+          
+        />*/}
       {/* </Card> */}
       {/*<FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}

@@ -263,7 +263,7 @@ export default function EnhancedTable() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Card sx={{ width: '100%', mb: 2 }}>
+      {/* <Card sx={{ width: '100%', mb: 2 }}> */}
         {/*<EnhancedTableToolbar numSelected={selected.length} />*/}
         <TableContainer>
           <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size={dense ? 'small' : 'medium'}>
@@ -327,7 +327,7 @@ export default function EnhancedTable() {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-      </Card>
+      {/* </Card> */}
       {/*<FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"

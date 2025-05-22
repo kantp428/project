@@ -5,14 +5,11 @@ import useFetchData from "@/hooks/useFetchData";
 import { StudentProfile } from "@/types/student";
 import CreditTable from "../Table/CreditTable";
 
-const UserCreditTableChart = () => {
-  const { data, loading, error } = useFetchData<StudentProfile>(
-    "/data/mockUser.json"
-  );
+type UserCreditTableChartProp = {
+  data: StudentProfile | null;
+};
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-
+const UserCreditTableChart: React.FC<UserCreditTableChartProp> = ({ data }) => {
   return (
     <>
       <Card

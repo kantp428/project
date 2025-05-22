@@ -12,7 +12,7 @@ import {
   plugins,
 } from "chart.js";
 import useFetchData from "@/hooks/useFetchData";
-import { Card, CardContent } from "@mui/material";
+import { Box, Card, CardContent } from "@mui/material";
 import { ResponsiveContainer } from "recharts";
 
 ChartJS.register(
@@ -98,7 +98,7 @@ const CourseChart = () => {
 
   return (
     <>
-      <Card
+      <Box
         sx={{
           paddingY: 1,
           paddingX: 2,
@@ -119,7 +119,7 @@ const CourseChart = () => {
             <Bar data={chartData} options={options} />
           </ResponsiveContainer>
         </CardContent>
-      </Card>
+      </Box>
     </>
   );
 };

@@ -5,14 +5,11 @@ import useFetchData from "@/hooks/useFetchData";
 import { StudentProfile } from "@/types/student";
 import GPATable from "../Table/GPATable";
 
-const UserTableChart = () => {
-  const { data, loading, error } = useFetchData<StudentProfile>(
-    "/data/mockUser.json"
-  );
+type UserTableChartProp = {
+  data: StudentProfile | null;
+};
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-
+const UserTableChart: React.FC<UserTableChartProp> = ({ data }) => {
   return (
     <>
       <Card

@@ -1,11 +1,11 @@
 "use client";
 import { Card, CardContent, Grid } from "@mui/material";
-import UserGPAChart from "./UserGPAChart";
+import UserGPAbyCreditChart from "./UserGPAbyCreditChart";
 import useFetchData from "@/hooks/useFetchData";
 import { StudentProfile } from "@/types/student";
-import GPATable from "../Table/GPATable";
+import CreditTable from "../Table/CreditTable";
 
-const UserTableChart = () => {
+const UserCreditTableChart = () => {
   const { data, loading, error } = useFetchData<StudentProfile>(
     "/data/mockUser.json"
   );
@@ -30,10 +30,10 @@ const UserTableChart = () => {
         <CardContent>
           <Grid container>
             <Grid item xs={12} mb={3}>
-              <UserGPAChart data={data?.academicRecords || []} />
+              <UserGPAbyCreditChart data={data?.subjectCategories || []} />
             </Grid>
             <Grid item xs={12} mb={3}>
-              <GPATable data={data?.academicRecords || []} />
+              <CreditTable data={data?.subjectCategories || []} />
             </Grid>
           </Grid>
         </CardContent>
@@ -42,4 +42,4 @@ const UserTableChart = () => {
   );
 };
 
-export default UserTableChart;
+export default UserCreditTableChart;

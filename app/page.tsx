@@ -1,3 +1,4 @@
+import UserCreditTableChart from "@/components/Chart/UserCreditTableChart";
 import UserTableChart from "@/components/Chart/UserTableChart";
 import { Typography, Button, Box, Paper, Grid } from "@mui/material";
 
@@ -135,6 +136,8 @@ export default function Home() {
         </Grid>
       </Paper>
       <UserTableChart />
+      
+      <UserCreditTableChart />
     </>
   );
 }

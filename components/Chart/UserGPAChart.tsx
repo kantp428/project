@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -36,6 +36,17 @@ type UserGPAChartProps = {
 };
 
 const UserGPAChart: React.FC<UserGPAChartProps> = ({ data }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   const labels = data.map((record) => `${record.year} ${record.semester}`);
 
   const chartData = {
@@ -84,9 +95,11 @@ const UserGPAChart: React.FC<UserGPAChartProps> = ({ data }) => {
         display: true,
         position: "top",
         labels: {
-          boxWidth: 10,
+          boxWidth: isMobile ? 10 : 16,
           padding: 10,
-          font: { size: 12 },
+          font: {
+            size: isMobile ? 10 : 16,
+          },
           generateLabels: (chart: Chart<"bar" | "line">) => {
             const defaultLegend =
               ChartJS.defaults.plugins.legend.labels.generateLabels(chart);
@@ -144,23 +157,22 @@ const UserGPAChart: React.FC<UserGPAChartProps> = ({ data }) => {
 
             const gpaxLegend = defaultLegend.find((l) => l.text === "GPAX");
 
-            const legends = gpaxLegend
+            return gpaxLegend
               ? [gpaxLegend, ...customLegends]
               : [...customLegends];
-
-            return legends;
           },
         },
       },
       tooltip: {
+        titleFont: { size: isMobile ? 10 : 14 },
+        bodyFont: { size: isMobile ? 10 : 14 },
         callbacks: {
           label: (context) => {
             const label = context.dataset.label || "";
             const value = context.parsed.y ?? context.parsed;
-            if (typeof value === "number") {
-              return `${label}: ${value.toFixed(2)}`;
-            }
-            return `${label}: ${value}`;
+            return typeof value === "number"
+              ? `${label}: ${value.toFixed(2)}`
+              : `${label}: ${value}`;
           },
         },
       },
@@ -172,11 +184,38 @@ const UserGPAChart: React.FC<UserGPAChartProps> = ({ data }) => {
         title: {
           display: true,
           text: "GPA",
+          font: {
+            size: isMobile ? 10 : 16,
+          },
+        },
+        ticks: {
+          font: {
+            size: isMobile ? 9 : 14,
+          },
         },
       },
       x: {
-        title: {
-          display: true,
+        ticks: {
+          callback: function (val) {
+            if (typeof val === "number") {
+              const label = this.getLabelForValue(val);
+              if (isMobile) {
+                const match = label.match(/^(\d{4})\s*ภาค(.*)$/);
+                if (match) {
+                  const shortYear = match[1].slice(-2);
+                  const term = match[2].trim();
+                  return `${shortYear} ${term}`;
+                }
+              }
+              return label;
+            }
+            return val;
+          },
+          font: {
+            size: isMobile ? 9 : 12,
+          },
+          maxRotation: 45,
+          minRotation: 0,
         },
       },
     },
@@ -187,17 +226,14 @@ const UserGPAChart: React.FC<UserGPAChartProps> = ({ data }) => {
       aria-label="User GPA chart showing GPA and GPAX over semesters"
       role="img"
       sx={{
-        paddingY: 1,
-        paddingX: 2,
-        height: "auto",
-        width: "auto",
-        maxHeight: "400px",
-        display: "flex",
-        flexDirection: "column",
-        border: 1,
+        width: "100%",
+        paddingY: 2,
+        paddingX: { xs: 1, sm: 3 },
       }}
     >
-      <CardContent sx={{ flexGrow: 1, height: "400px" }}>
+      <CardContent
+        sx={{ height: { xs: "320px", sm: "420px" }, position: "relative" }}
+      >
         <ReactChart type="bar" data={chartData} options={options} />
       </CardContent>
     </Box>

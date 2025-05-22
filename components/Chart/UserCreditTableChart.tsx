@@ -1,5 +1,5 @@
 "use client";
-import { Card, CardContent, Grid } from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 import UserGPAbyCreditChart from "./UserGPAbyCreditChart";
 import useFetchData from "@/hooks/useFetchData";
 import { StudentProfile } from "@/types/student";
@@ -24,6 +24,9 @@ const UserCreditTableChart: React.FC<UserCreditTableChartProp> = ({ data }) => {
           },
         }}
       >
+        <Typography variant="h6" gutterBottom mt={3} ml={3}>
+          ผลการเรียนแต่ละหมวดวิชา
+        </Typography>
         <CardContent>
           <Grid container>
             <Grid item xs={12} mb={3}>

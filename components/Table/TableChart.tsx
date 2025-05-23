@@ -180,7 +180,7 @@ export default function EnhancedTable() {
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const {
     data: statusData,
@@ -280,7 +280,7 @@ export default function EnhancedTable() {
             />
             <TableBody>
               {/*{visibleRows.map((row, index) => {*/}
-                {rows.map((row, index) => {
+                {visibleRows.map((row, index) => {
                 const isItemSelected = selected.includes(row.id);
                 const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -323,8 +323,8 @@ export default function EnhancedTable() {
           </Table>
           {/*</TableContainer>*/}
         
-        {/*<TablePagination 
-          rowsPerPageOptions={[5, 10, 25]}
+        {/* <TablePagination 
+          // rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
@@ -332,7 +332,7 @@ export default function EnhancedTable() {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
           
-        />*/}
+        /> */}
       {/* </Card> */}
       {/*<FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}

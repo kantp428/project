@@ -2,7 +2,7 @@ import GPAXChart from "@/components/Chart/GPAXChart";
 import { Card, Divider, Grid, Box, Typography } from "@mui/material";
 import React from "react";
 import Gpadata from "@/components/Chart/Gpadata";
-import CourseChartTable from "@/components/ChartTable/CourseChartTable";
+import CourseChartTable from "@/components/TableChart/CourseTableChart";
 const gpaData = [
   { label: "3.25-4.00", count: 41, color: "#6DD3EC" },
   { label: "2.00-3.24", count: 164, color: "#8CD790" },

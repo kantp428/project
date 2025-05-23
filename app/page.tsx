@@ -1,8 +1,8 @@
 "use client";
 import CategoryChart from "@/components/Chart/CategoryChart";
 import Namedata from "@/components/Chart/Namedata";
-import UserCreditTableChart from "@/components/Chart/UserCreditTableChart";
-import UserTableChart from "@/components/Chart/UserTableChart";
+import UserCreditTableChart from "@/components/TableChart/UserCreditTableChart";
+import UserTableChart from "@/components/TableChart/UserTableChart";
 import useFetchData from "@/hooks/useFetchData";
 import { StudentProfile } from "@/types/student";
 import { Box, Grid } from "@mui/material";

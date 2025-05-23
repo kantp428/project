@@ -180,7 +180,7 @@ export default function EnhancedTable() {
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const {
     data: statusData,
@@ -264,7 +264,7 @@ export default function EnhancedTable() {
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: '100%' }}>
+    <Box sx={{ width: '100%', maxWidth: '100%',}}>
       {/*<TableContainer sx={{ overflowX: 'auto' }}>*/}
       {/* <Card sx={{ width: '100%', mb: 2 }}> */}
         {/*<EnhancedTableToolbar numSelected={selected.length} />*/}
@@ -280,7 +280,7 @@ export default function EnhancedTable() {
             />
             <TableBody>
               {/*{visibleRows.map((row, index) => {*/}
-                {rows.map((row, index) => {
+                {visibleRows.map((row, index) => {
                 const isItemSelected = selected.includes(row.id);
                 const labelId = `enhanced-table-checkbox-${index}`;
 

@@ -1,6 +1,6 @@
 "use client";
 import { Card, CardContent, Grid, Typography } from "@mui/material";
-import UserGPAChart from "./UserGPAChart";
+import UserGPAChart from "../Chart/UserGPAChart";
 import useFetchData from "@/hooks/useFetchData";
 import { StudentProfile } from "@/types/student";
 import GPATable from "../Table/GPATable";

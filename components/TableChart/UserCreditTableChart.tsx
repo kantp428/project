@@ -1,9 +1,8 @@
 "use client";
 import { Card, CardContent, Grid, Typography } from "@mui/material";
-import UserGPAbyCreditChart from "./UserGPAbyCreditChart";
-import useFetchData from "@/hooks/useFetchData";
 import { StudentProfile } from "@/types/student";
 import CreditTable from "../Table/CreditTable";
+import UserGPAbyCreditChart from "../Chart/UserGPAbyCreditChart";
 
 type UserCreditTableChartProp = {
   data: StudentProfile | null;

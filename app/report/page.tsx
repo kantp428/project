@@ -1,9 +1,5 @@
-import CourseChart from "@/components/Chart/CourseChart";
 import GPAXChart from "@/components/Chart/GPAXChart";
-import Table_enchage from "@/components/Table/Table_enchage";
-import TableChart from "@/components/Table/TableChart";
 import { Card, Divider, Grid, Box, Typography } from "@mui/material";
-import { RadialLinearScale } from "chart.js";
 import React from "react";
 import Gpadata from "@/components/Chart/Gpadata";
 const gpaData = [
@@ -41,10 +37,6 @@ const page = () => {
         </Grid>
         <Grid item xs={12} sm={6} sx={{ marginBottom: 3 }}>
           <GPAXChart type="graduatedGPA" title="สถานภาพนิสิตจบการศึกษา" />
-        </Grid>
-
-        <Grid item xs={12} sx={{ marginBottom: 3 }}>
-          <Table_enchage />
         </Grid>
       </Grid>
     </>

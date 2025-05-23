@@ -1,4 +1,4 @@
-import Table_enchage from "@/components/Table/Table_enchage";
+import Table_enchage from "@/components/Table/EnhancedTable";
 import { Grid } from "@mui/material";
 
 import React from "react";

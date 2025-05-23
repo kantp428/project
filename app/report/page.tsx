@@ -2,6 +2,7 @@ import GPAXChart from "@/components/Chart/GPAXChart";
 import { Card, Divider, Grid, Box, Typography } from "@mui/material";
 import React from "react";
 import Gpadata from "@/components/Chart/Gpadata";
+import CourseChartTable from "@/components/ChartTable/CourseChartTable";
 const gpaData = [
   { label: "3.25-4.00", count: 41, color: "#6DD3EC" },
   { label: "2.00-3.24", count: 164, color: "#8CD790" },
@@ -37,6 +38,9 @@ const page = () => {
         </Grid>
         <Grid item xs={12} sm={6} sx={{ marginBottom: 3 }}>
           <GPAXChart type="graduatedGPA" title="สถานภาพนิสิตจบการศึกษา" />
+        </Grid>
+        <Grid item xs={12} sx={{ marginBottom: 3 }}>
+          <CourseChartTable />
         </Grid>
       </Grid>
     </>

@@ -2,7 +2,7 @@
 import React from "react";
 import CourseChart from "@/components/Chart/CourseChart";
 import GPAXChart from "@/components/Chart/GPAXChart";
-import Table_enchage from "@/components/Table/Table_enchage";
+import Table_enchage from "@/components/Table/EnhancedTable";
 import TableChart from "@/components/Table/TableChart";
 import { Card, Divider, Grid, Box, Typography } from "@mui/material";
 import { RadialLinearScale } from "chart.js";

@@ -64,7 +64,7 @@ const GPATable = ({ data }: GPATableProps) => {
                 align="center"
                 sx={{ color: record.GPAXChange >= 0 ? "#17cf3b" : "#cf171a" }}
               >
-                {record.GPAXChange >= 0
+                {record.GPAXChange > 0
                   ? `+${record.GPAXChange.toFixed(2)}`
                   : record.GPAXChange.toFixed(2)}
               </TableCell>

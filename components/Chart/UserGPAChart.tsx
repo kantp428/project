@@ -14,18 +14,21 @@ import {
   ChartOptions,
   Chart,
   LegendItem,
+  LineController, // ✅ Add LineController
 } from "chart.js";
 
 import { Chart as ReactChart } from "react-chartjs-2";
 import { Box, CardContent } from "@mui/material";
 import { AcademicRecord } from "@/types/student";
 
+// ✅ Register all required components
 ChartJS.register(
   CategoryScale,
   LinearScale,
   BarElement,
   LineElement,
   PointElement,
+  LineController, // ✅ Register LineController
   Title,
   Tooltip,
   Legend
@@ -50,7 +53,7 @@ const UserGPAChart: React.FC<UserGPAChartProps> = ({ data }) => {
   const labels = data.map((record) => `${record.year} ${record.semester}`);
 
   const chartData = {
-    type: "bar" as const, // Explicit type for mixed charts
+    type: "bar" as const,
     labels,
     datasets: [
       {
@@ -235,7 +238,7 @@ const UserGPAChart: React.FC<UserGPAChartProps> = ({ data }) => {
       <CardContent
         sx={{ height: { xs: "320px", sm: "420px" }, position: "relative" }}
       >
-        <ReactChart data={chartData} options={options} type={"bar"} />
+        <ReactChart type="bar" data={chartData} options={options} />
       </CardContent>
     </Box>
   );

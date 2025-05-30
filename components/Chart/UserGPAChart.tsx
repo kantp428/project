@@ -50,6 +50,7 @@ const UserGPAChart: React.FC<UserGPAChartProps> = ({ data }) => {
   const labels = data.map((record) => `${record.year} ${record.semester}`);
 
   const chartData = {
+    type: "bar" as const, // Explicit type for mixed charts
     labels,
     datasets: [
       {
@@ -234,7 +235,7 @@ const UserGPAChart: React.FC<UserGPAChartProps> = ({ data }) => {
       <CardContent
         sx={{ height: { xs: "320px", sm: "420px" }, position: "relative" }}
       >
-        <ReactChart type="bar" data={chartData} options={options} />
+        <ReactChart data={chartData} options={options} type={"bar"} />
       </CardContent>
     </Box>
   );
